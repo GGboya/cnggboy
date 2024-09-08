@@ -1,0 +1,68 @@
+{
+    "plugins": [
+        "hide-element",
+        "back-to-top-button",
+        "code",
+        "splitter",
+        "-lunr", 
+        "-search", 
+        "search-pro",
+        "tbfed-pagefooter",
+        "popup",
+        "-sharing", 
+        "sharing-plus",
+        "theme-fexa",
+        "github",
+        "3-ba",
+        "pageview-count",
+        "ga"
+    ],
+    "variables": {
+        "themeFexa":{
+            "nav":[
+                {
+                    "url":"http://122.51.217.77/",
+                    "target":"_blank",
+                    "name": "ggboy"
+                }
+            ]
+        }
+    },
+    "pluginsConfig": {
+        "hide-element": {
+            "elements": [".gitbook-link"]
+        },
+        "tbfed-pagefooter": {
+            "copyright":"Copyright ©2024-2024 cnggboy 版权所有",
+            "modify_label": "该文章修订时间：",
+            "modify_format": "YYYY-MM-DD HH:mm:ss"
+        },
+        "sharing": {
+             "douban": true,
+             "qq": true,
+             "weibo": true,
+          "all": [
+               "douban", "facebook", "google", "instapaper", "linkedin","twitter", "weibo", 
+               "messenger","qq", "qzone","viber","whatsapp"
+           ]
+        },
+        "theme-fexa":{
+            "search-placeholder":"输入关键字搜索", 
+            "logo":"img/image.png", 
+            "favicon": "img/favicon.ico" 
+        },
+        "github": {
+            "url": "https://github.com/GGboya/cnggboy"
+        },
+        "3-ba": {
+            "token": "c301a0cc12e8024756e08171e3e982d5"
+        },
+        "ga": {
+        "token": "G-P6MWM7FMKD"
+        },
+        "pageview-count": {
+        "type": "baidu",  
+        "token": "c301a0cc12e8024756e08171e3e982d5"  
+        }
+    }
+}
