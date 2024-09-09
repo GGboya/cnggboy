@@ -23,5 +23,6 @@
 
 ## 经验分享
 * [经验分享](share/ggboy.md)
+* [博客搭建全过程](share/ggblog.md)
 
 
