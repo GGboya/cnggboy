@@ -1,4 +1,5 @@
 # Summary
+
 * [Introduction](README.md)
 
 ## 语言
@@ -16,4 +17,11 @@
 
 ## 分布式
 * [分布式](distributed/index.md)
+
+## 消息队列
+* [kafka](message/index.md)
+
+## 经验分享
+* [经验分享](share/ggboy.md)
+
 
