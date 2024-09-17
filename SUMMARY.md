@@ -21,6 +21,9 @@
 ## 消息队列
 * [kafka](message/index.md)
 
+## k8s
+* [pv](high/pv.md)
+
 ## 经验分享
 * [经验分享](share/ggboy.md)
 * [博客搭建全过程](share/ggblog.md)
