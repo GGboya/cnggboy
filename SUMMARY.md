@@ -7,10 +7,10 @@
 * [Java](languages/java.md)
 
 ## 算法和数据结构
-* [算法](algorithms/algorithms)
-  * [输入输出模板](algorithms/algorithms/input.md)
-  * [筛质数](algorithms/algorithms/math.md)
-* [数据结构](algorithms/data-structures)
+### 算法
+  * [输入输出模板](algorithms/algorithm/input.md)
+  * [筛质数](algorithms/algorithm/math.md)
+### 数据结构
   * [线段树](algorithms/data-structures/segment.md)
   * [最小/最大堆](algorithms/data-structures/heapq.md)
   * [双端队列](algorithms/data-structures/deque.md)
@@ -30,7 +30,7 @@
 * [kafka](message/index.md)
 
 ## k8s
-* [high](k8s/high)
+### high
   * [pv](k8s/high/pv.md)
 
 ## 经验分享
