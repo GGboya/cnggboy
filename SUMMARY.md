@@ -10,6 +10,7 @@
 ## 算法和数据结构
 * [算法](algorithms/algorithms)
   * [输入输出模板](algorithms/algorithms/input.md)
+  * [筛质数](algorithms/algorithms/math.md)
 * [数据结构](algorithms/data-structures)
   * [线段树](algorithms/data-structures/segment.md)
   * [最小/最大堆](algorithms/data-structures/heapq.md)
