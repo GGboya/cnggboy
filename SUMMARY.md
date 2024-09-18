@@ -13,6 +13,7 @@
 * [数据结构](algorithms/data-structures)
   * [线段树](algorithms/data-structures/segment.md)
   * [最小/最大堆](algorithms/data-structures/heapq.md)
+  * [双端队列](algorithms/data-structures/deque.md)
 
 ## 计算机基础
 * [计算机网络](basics/network.md)
