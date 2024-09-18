@@ -1,6 +1,5 @@
 # Summary
 
-* [Introduction](README.md)
 
 ## 语言
 * [C++](languages/cpp.md)

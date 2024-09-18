@@ -15,7 +15,8 @@
         "github",
         "3-ba",
         "pageview-count",
-        "ga"
+        "ga",
+	"icp"
     ],
     "variables": {
         "themeFexa":{
@@ -63,6 +64,10 @@
         "pageview-count": {
         "type": "baidu",  
         "token": "c301a0cc12e8024756e08171e3e982d5"  
+        },
+	"icp": {
+            "label": "我的备案号:",
+            "number": "京ICP备2024087391号-1"
         }
     }
 }
