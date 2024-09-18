@@ -7,6 +7,13 @@
 * [Go](languages/go.md)
 * [Java](languages/java.md)
 
+## 算法和数据结构
+* [算法](algorithms/algorithms)
+  * [输入输出模板](algorithms/algorithms/input.md)
+* [数据结构](algorithms/data-structures)
+  * [线段树](algorithms/data-structures/segment.md)
+  * [最小/最大堆](algorithms/data-structures/heapq.md)
+
 ## 计算机基础
 * [计算机网络](basics/network.md)
 * [操作系统](basics/os.md)
@@ -22,7 +29,8 @@
 * [kafka](message/index.md)
 
 ## k8s
-* [pv](high/pv.md)
+* [high](k8s/high)
+  * [pv](k8s/high/pv.md)
 
 ## 经验分享
 * [经验分享](share/ggboy.md)
