@@ -16,7 +16,10 @@
         "3-ba",
         "pageview-count",
         "ga",
-	"icp"
+	    "icp",
+        "chapter-fold",
+        "expandable-chapters",
+        "prism", "-highlight"
     ],
     "variables": {
         "themeFexa":{
@@ -65,9 +68,14 @@
         "type": "baidu",  
         "token": "c301a0cc12e8024756e08171e3e982d5"  
         },
-	"icp": {
-            "label": "我的备案号:",
-            "number": "京ICP备2024087391号-1"
+        "icp": {
+                "label": "我的备案号:",
+                "number": "京ICP备2024087391号-1"
+            }
+        },
+        "prism": {
+        "css": [
+            "prismjs/themes/prism-okaidia.css"
+        ]
         }
-    }
 }

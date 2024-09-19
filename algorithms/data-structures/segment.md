@@ -16,7 +16,7 @@
 
 build操作通过递归实现，先求出子节点的值，然后更新父节点的值，代码如下：
 
-```Go
+```go
 func (s *SegmentTree) build(o, l, r int) {
 	if l == r {
 		s.sum[o] = s.nums[l-1]
@@ -39,7 +39,7 @@ func (s *SegmentTree) build(o, l, r int) {
 
 由于需要修改的下标index是已知的，当index小于等于mid，就只需要去搜索左子树。反之亦然。
 
-```Go
+```go
 func (s *SegmentTree) update(o, l, r, idx, val int) {
 	if l == r {
 		s.sum[o] = val
@@ -70,7 +70,7 @@ func (s *SegmentTree) update(o, l, r, idx, val int) {
 
 判断清楚所有的情况即可
 
-```Go
+```go
 func (s *SegmentTree) query(o, l, r, L, R int) int {
 	if L <= l && R >= r {
 		return s.sum[o]
@@ -98,7 +98,7 @@ func (s *SegmentTree) query(o, l, r, L, R int) int {
 
 注意，线段树的结点下标是从1开始的，用户使用的index下标从0开始
 
-```Go
+```go
 func (s *SegmentTree) Update(index int, val int) {
 	s.update(1, 1, len(this.nums), index+1, val)
 }
@@ -111,7 +111,7 @@ func (s *SegmentTree) Update(index int, val int) {
 
 避免参数过多，对query函数进行简单封装
 
-```Go
+```go
 func (s *SegmentTree) SumRange(left int, right int) int {
 	return s.query(1, 1, len(this.nums), left+1, right+1)
 }
@@ -122,7 +122,7 @@ func (s *SegmentTree) SumRange(left int, right int) int {
 
 ## 完整模板
 
-```Go
+```go
 package main
 
 type SegmentTree struct {
@@ -238,7 +238,7 @@ func (s *SegmentTree) SumRange(left int, right int) int {
 
 具体代码如下
 
-```Go
+```go
 func (t *BookMyShow) Index(o, l, r, val, R int) int {
 	// 返回区间[1, R]中小于等于val的最靠左的位置，不存在返回0
 	if t.min[o] > val {
@@ -277,7 +277,7 @@ func (t *BookMyShow) Index(o, l, r, val, R int) int {
 
 使用的时候再开辟空间，而不是事先就开辟好空间。因此add的代码为
 
-```Go
+```go
 func (s *SegmentTree) add(l, r, idx, val int) {
 	if l == r {
 		s.sum += val
@@ -308,7 +308,7 @@ func (s *SegmentTree) add(l, r, idx, val int) {
 
 查询的代码如下
 
-```Go
+```go
 func (s *SegmentTree) query(l, r, L, R int) int {
 	if L <= l && r <= R {
 		return s.sum

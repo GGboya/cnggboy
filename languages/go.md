@@ -4,7 +4,7 @@
 
 小明学go语法的时候，看到了下面这段代码
 
-```Go
+```go
 type T struct{}
 
 func (t T) M(n int) {
@@ -30,7 +30,7 @@ func main() {
 
 无论是 T 类型实例，还是 *T 类型实例，都既可以调用 receiver 为 T 类型的方法，也可以调用 receiver 为 *T 类型的方法。这样，我们在为方法选择 receiver 参数的类型的时候，就不需要担心这个方法不能被与 receiver 参数类型不一致的类型实例调用了
 
-```Go
+```go
 // typecheckmethod handles type-checking of a method call e.g. x.method(args).
 func typecheckmethod(n *Node, top int) *Node {
     // Get the method set for the receiver type.
@@ -76,7 +76,7 @@ func typecheckmethod(n *Node, top int) *Node {
 
 小明学go的时候，看到下面这段代码
 
-```Go
+```go
 type Interface interface {
 	M1()
 	M2()
@@ -132,7 +132,7 @@ Go 语言规定，*T 类型的方法集合包含所有以 *T 为 receiver 参数
 
 在Go语言中，当一个类型实现了`fmt.Stringer`接口，`fmt`包的相关函数（如`fmt.Println`、`fmt.Printf`等）会自动调用该类型的`String`方法来获取其字符串表示。`fmt.Stringer`接口定义如下：
 
-```Go
+```go
 type Stringer interface {
     String() string
 }
@@ -147,7 +147,7 @@ type Stringer interface {
 
 他的代码如下：
 
-```Go
+```go
 func (d *deque) String() string {
 	var elements []string
 	for i := len(d.l) - 1; i >= 0; i-- {

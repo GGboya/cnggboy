@@ -1,6 +1,6 @@
 # 力扣和cf可以用
 
-```Go
+```go
 type deque struct {
 	l, r []any
 }

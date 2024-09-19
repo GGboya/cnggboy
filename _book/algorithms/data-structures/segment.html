@@ -1,0 +1,940 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>线段树 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-tbfed-pagefooter/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-pageview-count/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-icp/footer.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-theme-fexa/fexa.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="heapq.html" />
+    
+    
+    <link rel="prev" href="../datastruct.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+	<div class="header-inner">
+		<!-- LOGO -->
+		<div class="logo"></div>
+		<span class="title"></span>
+
+		<!-- Search -->
+		
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+
+		<!-- Nav -->
+		<ul class="header-nav">
+			<li>
+				<a href="http://122.51.217.77/" target="_blank">ggboy</a>
+			</li>
+		</ul>
+	</div>
+
+	<div class="book-summary">
+		<div class="book-summary-title">文档目录</div>
+		
+		
+		<nav role="navigation">
+			
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">语言</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../languages/cpp.html">
+            
+                <a href="../../languages/cpp.html">
+            
+                    
+                    C++
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../languages/go.html">
+            
+                <a href="../../languages/go.html">
+            
+                    
+                    Go
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../languages/java.html">
+            
+                <a href="../../languages/java.html">
+            
+                    
+                    Java
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">算法和数据结构</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../algorithm.html">
+            
+                <a href="../algorithm.html">
+            
+                    
+                    算法
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="../algorithm/input.html">
+            
+                <a href="../algorithm/input.html">
+            
+                    
+                    输入输出模板
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.1.2" data-path="../algorithm/math.html">
+            
+                <a href="../algorithm/math.html">
+            
+                    
+                    筛质数
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../datastruct.html">
+            
+                <a href="../datastruct.html">
+            
+                    
+                    数据结构
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="2.2.1" data-path="segment.html">
+            
+                <a href="segment.html">
+            
+                    
+                    线段树
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="heapq.html">
+            
+                <a href="heapq.html">
+            
+                    
+                    最小/最大堆
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.3" data-path="deque.html">
+            
+                <a href="deque.html">
+            
+                    
+                    双端队列
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">计算机基础</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../../basics/network.html">
+            
+                <a href="../../basics/network.html">
+            
+                    
+                    计算机网络
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../../basics/os.html">
+            
+                <a href="../../basics/os.html">
+            
+                    
+                    操作系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">数据库</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../../databases/mysql.html">
+            
+                <a href="../../databases/mysql.html">
+            
+                    
+                    MySQL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.2" data-path="../../databases/redis.html">
+            
+                <a href="../../databases/redis.html">
+            
+                    
+                    Redis
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">分布式</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../../distributed/">
+            
+                <a href="../../distributed/">
+            
+                    
+                    分布式
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">消息队列</li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../../message/">
+            
+                <a href="../../message/">
+            
+                    
+                    kafka
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">k8s</li>
+        
+        
+    
+        <li class="chapter " data-level="7.1" data-path="../../k8s/high.html">
+            
+                <a href="../../k8s/high.html">
+            
+                    
+                    pv
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="7.1.1" data-path="../../k8s/high/pv.html">
+            
+                <a href="../../k8s/high/pv.html">
+            
+                    
+                    pv
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="header">经验分享</li>
+        
+        
+    
+        <li class="chapter " data-level="8.1" data-path="../../share/ggboy.html">
+            
+                <a href="../../share/ggboy.html">
+            
+                    
+                    经验分享
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="8.2" data-path="../../share/ggblog.html">
+            
+                <a href="../../share/ggblog.html">
+            
+                    
+                    博客搭建全过程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="_blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+
+    
+    <li>
+        我的备案号:
+        
+        
+            
+        
+        
+            <a href="https://beian.miit.gov.cn/" target="_blank" class="gitbook-link">
+                京ICP备2024087391号-1
+            </a>
+        
+    </li>
+    
+</ul>
+
+		</nav>
+		
+		
+	</div>
+
+	<!-- Content nav -->
+	<div class="book-anchor">
+		<div class="book-anchor-title">在这篇文章中:</div>
+		<div class="book-anchor-body">
+
+		</div>
+	</div>
+
+	<div class="book-body">
+		
+		<div class="body-inner">
+			
+			
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >线段树</a>
+    </h1>
+</div>
+
+
+
+
+			<div class="page-wrapper" tabindex="-1" role="main">
+				<div class="page-inner">
+					
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+					<section class="normal markdown-section">
+						
+						<h1 id="&#x57FA;&#x7840;&#x7EBF;&#x6BB5;&#x6811;">&#x57FA;&#x7840;&#x7EBF;&#x6BB5;&#x6811;</h1>
+<p>&#x5355;&#x70B9;&#x4FEE;&#x6539;&#xFF0C;&#x533A;&#x95F4;&#x67E5;&#x8BE2;</p>
+<p>&#x5355;&#x70B9;&#x4FEE;&#x6539;&#xFF1A;&#x5BF9;nums[i]&#x7684;&#x503C;&#x66F4;&#x65B0;&#x4E3A;val</p>
+<p>&#x533A;&#x95F4;&#x67E5;&#x8BE2;&#xFF1A;&#x8FD4;&#x56DE;nums[l, r]&#x4E4B;&#x95F4;&#x7684;&#x5143;&#x7D20;&#x548C;</p>
+<h2 id="&#x6784;&#x9020;&#x7EBF;&#x6BB5;&#x6811;-build">&#x6784;&#x9020;&#x7EBF;&#x6BB5;&#x6811;-build</h2>
+<p>&#x63A5;&#x6536;&#x6570;&#x7EC4;nums&#xFF0C;&#x6839;&#x636E;nums&#x6784;&#x9020;&#x51FA;&#x7EBF;&#x6BB5;&#x6811;SegmentTree</p>
+<p>&#x7EBF;&#x6BB5;&#x6811;&#x4E0A;&#x6BCF;&#x4E00;&#x4E2A;&#x7ED3;&#x70B9;&#x662F;&#x4E00;&#x4E2A;&#x533A;&#x95F4;&#xFF0C;&#x6839;&#x8282;&#x70B9;&#x4EE3;&#x8868;$[1,n]$&#x7684;&#x533A;&#x95F4;&#xFF0C;&#x53F6;&#x5B50;&#x7ED3;&#x70B9;&#x4EE3;&#x8868;&#x5355;&#x70B9;</p>
+<p>&#x6784;&#x9020;&#x7EBF;&#x6BB5;&#x6811;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x5BF9;&#x6BCF;&#x4E2A;&#x7EBF;&#x6BB5;&#x6811;&#x4E0A;&#x7684;&#x7ED3;&#x70B9;&#x8D4B;&#x503C;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x6C42;&#x51FA;&#x7EBF;&#x6BB5;&#x6811;&#x6BCF;&#x4E2A;&#x7ED3;&#x70B9;&#x5BF9;&#x5E94;&#x533A;&#x95F4;&#x7684;&#x5143;&#x7D20;&#x548C;</p>
+<p>build&#x64CD;&#x4F5C;&#x901A;&#x8FC7;&#x9012;&#x5F52;&#x5B9E;&#x73B0;&#xFF0C;&#x5148;&#x6C42;&#x51FA;&#x5B50;&#x8282;&#x70B9;&#x7684;&#x503C;&#xFF0C;&#x7136;&#x540E;&#x66F4;&#x65B0;&#x7236;&#x8282;&#x70B9;&#x7684;&#x503C;&#xFF0C;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>s <span class="token operator">*</span>SegmentTree<span class="token punctuation">)</span> <span class="token function">build</span><span class="token punctuation">(</span>o<span class="token punctuation">,</span> l<span class="token punctuation">,</span> r <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> l <span class="token operator">==</span> r <span class="token punctuation">{</span>
+        s<span class="token punctuation">.</span>sum<span class="token punctuation">[</span>o<span class="token punctuation">]</span> <span class="token operator">=</span> s<span class="token punctuation">.</span>nums<span class="token punctuation">[</span>l<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+        <span class="token keyword">return</span>
+    <span class="token punctuation">}</span>
+
+    mid <span class="token operator">:=</span> <span class="token punctuation">(</span>l <span class="token operator">+</span> r<span class="token punctuation">)</span> <span class="token operator">&gt;&gt;</span> <span class="token number">1</span>
+    s<span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">,</span> l<span class="token punctuation">,</span> mid<span class="token punctuation">)</span>
+    s<span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">(</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">|</span><span class="token number">1</span><span class="token punctuation">,</span> mid<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> r<span class="token punctuation">)</span>
+    s<span class="token punctuation">.</span>sum<span class="token punctuation">[</span>o<span class="token punctuation">]</span> <span class="token operator">=</span> s<span class="token punctuation">.</span>sum<span class="token punctuation">[</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> s<span class="token punctuation">.</span>sum<span class="token punctuation">[</span><span class="token punctuation">(</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">|</span><span class="token number">1</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="&#x5355;&#x70B9;&#x4FEE;&#x6539;-update">&#x5355;&#x70B9;&#x4FEE;&#x6539;-update</h2>
+<p>&#x7EBF;&#x6BB5;&#x6811;&#x4E0A;&#x7684;&#x4E00;&#x4E2A;&#x7ED3;&#x70B9;&#x4F1A;&#x6709;&#x82E5;&#x5E72;&#x7236;&#x8282;&#x70B9;&#xFF0C;&#x5F53;&#x4FEE;&#x6539;&#x4E86;&#x67D0;&#x4E00;&#x4E2A;&#x7ED3;&#x70B9;&#x7684;&#x503C;&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x7236;&#x8282;&#x70B9;&#x7684;&#x503C;&#x4E5F;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x3002;</p>
+<p>&#x7531;&#x4E8E;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x7684;&#x4E0B;&#x6807;index&#x662F;&#x5DF2;&#x77E5;&#x7684;&#xFF0C;&#x5F53;index&#x5C0F;&#x4E8E;&#x7B49;&#x4E8E;mid&#xFF0C;&#x5C31;&#x53EA;&#x9700;&#x8981;&#x53BB;&#x641C;&#x7D22;&#x5DE6;&#x5B50;&#x6811;&#x3002;&#x53CD;&#x4E4B;&#x4EA6;&#x7136;&#x3002;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>s <span class="token operator">*</span>SegmentTree<span class="token punctuation">)</span> <span class="token function">update</span><span class="token punctuation">(</span>o<span class="token punctuation">,</span> l<span class="token punctuation">,</span> r<span class="token punctuation">,</span> idx<span class="token punctuation">,</span> val <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> l <span class="token operator">==</span> r <span class="token punctuation">{</span>
+        s<span class="token punctuation">.</span>sum<span class="token punctuation">[</span>o<span class="token punctuation">]</span> <span class="token operator">=</span> val
+        <span class="token keyword">return</span> 
+    <span class="token punctuation">}</span>
+    mid <span class="token operator">:=</span> <span class="token punctuation">(</span>l <span class="token operator">+</span> r<span class="token punctuation">)</span> <span class="token operator">&gt;&gt;</span> <span class="token number">1</span>
+    <span class="token keyword">if</span> idx <span class="token operator">&lt;=</span> mid <span class="token punctuation">{</span>
+        s<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">,</span> l<span class="token punctuation">,</span> mid<span class="token punctuation">,</span> idx<span class="token punctuation">,</span> val<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        s<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">(</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">|</span><span class="token number">1</span><span class="token punctuation">,</span> mid<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> r<span class="token punctuation">,</span> idx<span class="token punctuation">,</span> val<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    s<span class="token punctuation">.</span>sum<span class="token punctuation">[</span>o<span class="token punctuation">]</span> <span class="token operator">=</span> s<span class="token punctuation">.</span>sum<span class="token punctuation">[</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> s<span class="token punctuation">.</span>sum<span class="token punctuation">[</span><span class="token punctuation">(</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">|</span><span class="token number">1</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="&#x533A;&#x95F4;&#x67E5;&#x8BE2;-query">&#x533A;&#x95F4;&#x67E5;&#x8BE2;-query</h2>
+<p>&#x7EBF;&#x6BB5;&#x6811;&#x4E0A;&#x7684;&#x6BCF;&#x4E2A;&#x7ED3;&#x70B9;&#x90FD;&#x5B58;&#x653E;&#x4E86;&#x5BF9;&#x5E94;&#x533A;&#x95F4;&#x7684;&#x5143;&#x7D20;&#x548C;</p>
+<p>&#x5047;&#x8BBE;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x67E5;&#x8BE2;&#x7684;&#x533A;&#x95F4;&#x4E3A;$[L, R]$</p>
+<p>&#x5BF9;&#x4E8E;&#x7ED3;&#x70B9;node&#x5BF9;&#x5E94;&#x7684;&#x533A;&#x95F4;$[l,r]$&#xFF0C;&#x8BE5;&#x533A;&#x95F4;&#x7684;&#x4E2D;&#x70B9;&#x4E3A;mid</p>
+<p>&#x67E5;&#x8BE2;&#x7684;&#x533A;&#x95F4;&#x8981;&#x4E48;&#x5168;&#x90E8;&#x5728;mid&#x5DE6;&#x8FB9;&#xFF0C;&#x8981;&#x4E48;&#x5728;&#x53F3;&#x8FB9;&#xFF0C;&#x8981;&#x4E48;&#x4E00;&#x90E8;&#x5206;&#x5728;&#x5DE6;&#x8FB9;&#x3001;&#x4E00;&#x90E8;&#x5206;&#x5728;&#x53F3;&#x8FB9;</p>
+<p>&#x5224;&#x65AD;&#x6E05;&#x695A;&#x6240;&#x6709;&#x7684;&#x60C5;&#x51B5;&#x5373;&#x53EF;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>s <span class="token operator">*</span>SegmentTree<span class="token punctuation">)</span> <span class="token function">query</span><span class="token punctuation">(</span>o<span class="token punctuation">,</span> l<span class="token punctuation">,</span> r<span class="token punctuation">,</span> L<span class="token punctuation">,</span> R <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> L <span class="token operator">&lt;=</span> l <span class="token operator">&amp;&amp;</span> R <span class="token operator">&gt;=</span> r <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> s<span class="token punctuation">.</span>sum<span class="token punctuation">[</span>o<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+    mid <span class="token operator">:=</span> <span class="token punctuation">(</span>l <span class="token operator">+</span> r<span class="token punctuation">)</span> <span class="token operator">&gt;&gt;</span> <span class="token number">1</span>
+
+    <span class="token keyword">if</span> R <span class="token operator">&lt;=</span> mid <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> s<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">,</span> l<span class="token punctuation">,</span> mid<span class="token punctuation">,</span> L<span class="token punctuation">,</span> R<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> L <span class="token operator">&gt;</span> mid <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> s<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token punctuation">(</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">|</span><span class="token number">1</span><span class="token punctuation">,</span> mid<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> r<span class="token punctuation">,</span> L<span class="token punctuation">,</span> R<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> s<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">,</span> l<span class="token punctuation">,</span> mid<span class="token punctuation">,</span> L<span class="token punctuation">,</span> R<span class="token punctuation">)</span> <span class="token operator">+</span> s<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token punctuation">(</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">|</span><span class="token number">1</span><span class="token punctuation">,</span> mid<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> r<span class="token punctuation">,</span> L<span class="token punctuation">,</span> R<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="&#x4F18;&#x5316;&#x53C2;&#x6570;-update">&#x4F18;&#x5316;&#x53C2;&#x6570;-Update</h2>
+<p>&#x907F;&#x514D;&#x7528;&#x6237;&#x4F7F;&#x7528;&#x51FD;&#x6570;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x8003;&#x8651;&#x8FC7;&#x591A;&#x7684;&#x53C2;&#x6570;&#x3002;&#x56E0;&#x6B64;&#x5355;&#x72EC;&#x5199;&#x4E00;&#x4E2A;Update&#x51FD;&#x6570;&#xFF0C;&#x7B80;&#x5355;&#x5C01;&#x88C5;&#x4E00;&#x4E0B;</p>
+<p>&#x6CE8;&#x610F;&#xFF0C;&#x7EBF;&#x6BB5;&#x6811;&#x7684;&#x7ED3;&#x70B9;&#x4E0B;&#x6807;&#x662F;&#x4ECE;1&#x5F00;&#x59CB;&#x7684;&#xFF0C;&#x7528;&#x6237;&#x4F7F;&#x7528;&#x7684;index&#x4E0B;&#x6807;&#x4ECE;0&#x5F00;&#x59CB;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>s <span class="token operator">*</span>SegmentTree<span class="token punctuation">)</span> <span class="token function">Update</span><span class="token punctuation">(</span>index <span class="token builtin">int</span><span class="token punctuation">,</span> val <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    s<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token function">len</span><span class="token punctuation">(</span>this<span class="token punctuation">.</span>nums<span class="token punctuation">)</span><span class="token punctuation">,</span> index<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> val<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="&#x4F18;&#x5316;&#x53C2;&#x6570;-sumrange">&#x4F18;&#x5316;&#x53C2;&#x6570;-SumRange</h2>
+<p>&#x907F;&#x514D;&#x53C2;&#x6570;&#x8FC7;&#x591A;&#xFF0C;&#x5BF9;query&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x7B80;&#x5355;&#x5C01;&#x88C5;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>s <span class="token operator">*</span>SegmentTree<span class="token punctuation">)</span> <span class="token function">SumRange</span><span class="token punctuation">(</span>left <span class="token builtin">int</span><span class="token punctuation">,</span> right <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> s<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token function">len</span><span class="token punctuation">(</span>this<span class="token punctuation">.</span>nums<span class="token punctuation">)</span><span class="token punctuation">,</span> left<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> right<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="&#x5B8C;&#x6574;&#x6A21;&#x677F;">&#x5B8C;&#x6574;&#x6A21;&#x677F;</h2>
+<pre class="language-"><code class="lang-go"><span class="token keyword">package</span> main
+
+<span class="token keyword">type</span> SegmentTree <span class="token keyword">struct</span> <span class="token punctuation">{</span>
+    sum  <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span> <span class="token comment">// &#x4E0B;&#x6807;&#x4ECE;1&#x5F00;&#x59CB;</span>
+    nums <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span> <span class="token comment">// &#x4E0B;&#x6807;&#x4ECE;0&#x5F00;&#x59CB;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>s <span class="token operator">*</span>SegmentTree<span class="token punctuation">)</span> <span class="token function">build</span><span class="token punctuation">(</span>o<span class="token punctuation">,</span> l<span class="token punctuation">,</span> r <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> l <span class="token operator">==</span> r <span class="token punctuation">{</span>
+        s<span class="token punctuation">.</span>sum<span class="token punctuation">[</span>o<span class="token punctuation">]</span> <span class="token operator">=</span> s<span class="token punctuation">.</span>nums<span class="token punctuation">[</span>l<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span>
+        <span class="token keyword">return</span>
+    <span class="token punctuation">}</span>
+
+    mid <span class="token operator">:=</span> <span class="token punctuation">(</span>l <span class="token operator">+</span> r<span class="token punctuation">)</span> <span class="token operator">&gt;&gt;</span> <span class="token number">1</span>
+    s<span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">,</span> l<span class="token punctuation">,</span> mid<span class="token punctuation">)</span>
+    s<span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">(</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">|</span><span class="token number">1</span><span class="token punctuation">,</span> mid<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> r<span class="token punctuation">)</span>
+    s<span class="token punctuation">.</span>sum<span class="token punctuation">[</span>o<span class="token punctuation">]</span> <span class="token operator">=</span> s<span class="token punctuation">.</span>sum<span class="token punctuation">[</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> s<span class="token punctuation">.</span>sum<span class="token punctuation">[</span><span class="token punctuation">(</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">|</span><span class="token number">1</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>s <span class="token operator">*</span>SegmentTree<span class="token punctuation">)</span> <span class="token function">update</span><span class="token punctuation">(</span>o<span class="token punctuation">,</span> l<span class="token punctuation">,</span> r<span class="token punctuation">,</span> idx<span class="token punctuation">,</span> val <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> l <span class="token operator">==</span> r <span class="token punctuation">{</span>
+        s<span class="token punctuation">.</span>sum<span class="token punctuation">[</span>o<span class="token punctuation">]</span> <span class="token operator">=</span> val
+        <span class="token keyword">return</span>
+    <span class="token punctuation">}</span>
+    mid <span class="token operator">:=</span> <span class="token punctuation">(</span>l <span class="token operator">+</span> r<span class="token punctuation">)</span> <span class="token operator">&gt;&gt;</span> <span class="token number">1</span>
+    <span class="token keyword">if</span> idx <span class="token operator">&lt;=</span> mid <span class="token punctuation">{</span>
+        s<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">,</span> l<span class="token punctuation">,</span> mid<span class="token punctuation">,</span> idx<span class="token punctuation">,</span> val<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        s<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token punctuation">(</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">|</span><span class="token number">1</span><span class="token punctuation">,</span> mid<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> r<span class="token punctuation">,</span> idx<span class="token punctuation">,</span> val<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    s<span class="token punctuation">.</span>sum<span class="token punctuation">[</span>o<span class="token punctuation">]</span> <span class="token operator">=</span> s<span class="token punctuation">.</span>sum<span class="token punctuation">[</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">+</span> s<span class="token punctuation">.</span>sum<span class="token punctuation">[</span><span class="token punctuation">(</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">|</span><span class="token number">1</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>s <span class="token operator">*</span>SegmentTree<span class="token punctuation">)</span> <span class="token function">query</span><span class="token punctuation">(</span>o<span class="token punctuation">,</span> l<span class="token punctuation">,</span> r<span class="token punctuation">,</span> L<span class="token punctuation">,</span> R <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> L <span class="token operator">&lt;=</span> l <span class="token operator">&amp;&amp;</span> R <span class="token operator">&gt;=</span> r <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> s<span class="token punctuation">.</span>sum<span class="token punctuation">[</span>o<span class="token punctuation">]</span>
+    <span class="token punctuation">}</span>
+    mid <span class="token operator">:=</span> <span class="token punctuation">(</span>l <span class="token operator">+</span> r<span class="token punctuation">)</span> <span class="token operator">&gt;&gt;</span> <span class="token number">1</span>
+
+    <span class="token keyword">if</span> R <span class="token operator">&lt;=</span> mid <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> s<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">,</span> l<span class="token punctuation">,</span> mid<span class="token punctuation">,</span> L<span class="token punctuation">,</span> R<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> L <span class="token operator">&gt;</span> mid <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> s<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token punctuation">(</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">|</span><span class="token number">1</span><span class="token punctuation">,</span> mid<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> r<span class="token punctuation">,</span> L<span class="token punctuation">,</span> R<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> s<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">,</span> l<span class="token punctuation">,</span> mid<span class="token punctuation">,</span> L<span class="token punctuation">,</span> R<span class="token punctuation">)</span> <span class="token operator">+</span> s<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token punctuation">(</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">|</span><span class="token number">1</span><span class="token punctuation">,</span> mid<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> r<span class="token punctuation">,</span> L<span class="token punctuation">,</span> R<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token function">bit_length</span><span class="token punctuation">(</span>x <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+    size <span class="token operator">:=</span> <span class="token number">0</span>
+    <span class="token keyword">for</span> x <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token punctuation">{</span>
+        x <span class="token operator">&gt;&gt;=</span> <span class="token number">1</span>
+        size <span class="token operator">+=</span> <span class="token number">1</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> size
+<span class="token punctuation">}</span>
+<span class="token keyword">func</span> <span class="token function">Constructor</span><span class="token punctuation">(</span>nums <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">)</span> SegmentTree <span class="token punctuation">{</span>
+    tree <span class="token operator">:=</span> SegmentTree<span class="token punctuation">{</span>
+        sum<span class="token punctuation">:</span>  <span class="token function">make</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token builtin">int</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token operator">&lt;&lt;</span><span class="token function">bit_length</span><span class="token punctuation">(</span><span class="token function">len</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+        nums<span class="token punctuation">:</span> nums<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span>
+    tree<span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token function">len</span><span class="token punctuation">(</span>nums<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> tree
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>s <span class="token operator">*</span>SegmentTree<span class="token punctuation">)</span> <span class="token function">Update</span><span class="token punctuation">(</span>index <span class="token builtin">int</span><span class="token punctuation">,</span> val <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    s<span class="token punctuation">.</span><span class="token function">update</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token function">len</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>nums<span class="token punctuation">)</span><span class="token punctuation">,</span> index<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> val<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">func</span> <span class="token punctuation">(</span>s <span class="token operator">*</span>SegmentTree<span class="token punctuation">)</span> <span class="token function">SumRange</span><span class="token punctuation">(</span>left <span class="token builtin">int</span><span class="token punctuation">,</span> right <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> s<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token function">len</span><span class="token punctuation">(</span>s<span class="token punctuation">.</span>nums<span class="token punctuation">)</span><span class="token punctuation">,</span> left<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> right<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * Your NumArray object will be instantiated and called as such:
+ * obj := Constructor(nums);
+ * obj.Update(index,val);
+ * param_2 := obj.SumRange(left,right);
+ */</span>
+</code></pre>
+<h2 id="&#x503C;&#x57DF;&#x79BB;&#x6563;&#x5316;">&#x503C;&#x57DF;&#x79BB;&#x6563;&#x5316;</h2>
+<p>&#x5F53;&#x503C;&#x57DF;&#x5B58;&#x5728;&#x590D;&#x6570;&#xFF0C;&#x6216;&#x8005;&#x503C;&#x57DF;&#x7279;&#x522B;&#x5927;&#xFF0C;&#x4F46;&#x662F;&#x6570;&#x7EC4;&#x957F;&#x5EA6;&#x53C8;&#x6BD4;&#x8F83;&#x5C0F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x79BB;&#x6563;&#x5316;&#x7684;&#x6280;&#x5DE7;&#x3002;</p>
+<p>&#x5BF9;&#x6570;&#x7EC4;&#x8FDB;&#x884C;&#x54C8;&#x5E0C;&#xFF0C;&#x6392;&#x5E8F;&#x3002;&#x6B64;&#x65F6;&#x6BCF;&#x4E2A;&#x6570;&#x7EC4;&#x7684;&#x4E0B;&#x6807;&#x5C31;&#x548C;&#x5143;&#x7D20;&#x503C;&#x8FDB;&#x884C;&#x4E86;&#x6620;&#x5C04;&#xFF0C;&#x4ECE;&#x800C;&#x8FBE;&#x5230;&#x79BB;&#x6563;&#x5316;&#x7684;&#x6548;&#x679C;&#x3002;</p>
+<h2 id="&#x7EBF;&#x6BB5;&#x6811;&#x4E8C;&#x5206;">&#x7EBF;&#x6BB5;&#x6811;&#x4E8C;&#x5206;</h2>
+<p>&#x67E5;&#x8BE2;&#x67D0;&#x4E2A;&#x533A;&#x95F4;&#x4E2D;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#x7684;&#x6700;&#x5C0F;&#x5143;&#x7D20;</p>
+<p>&#x4EE5;&#x67E5;&#x8BE2;&#x524D;maxRow&#x884C;&#x4E2D;&#xFF0C;&#x89C2;&#x4F17;&#x6570;&#x4E0D;&#x8D85;&#x8FC7;m-k&#xFF0C;&#x5E76;&#x4E14;&#x4E0B;&#x6807;&#x6700;&#x5C0F;&#x7684;&#x884C;&#x4E3A;&#x4F8B;&#xFF0C;&#x5B66;&#x4E60;&#x7EBF;&#x6BB5;&#x6811;&#x4E8C;&#x5206;&#x7684;&#x5199;&#x6CD5;</p>
+<p>&#x7528;&#x7EBF;&#x6BB5;&#x6811;&#x7EF4;&#x62A4;&#x6BCF;&#x4E2A;&#x533A;&#x95F4;&#x4E0A;&#x7684;&#x89C2;&#x4F17;&#x6570;&#x7684;&#x6700;&#x5C0F;&#x503C;</p>
+<ul>
+<li><p>&#x5F53;&#x524D;&#x533A;&#x95F4;&#x7684;&#x6700;&#x5C0F;&#x503C; &gt; m-k&#xFF0C;&#x8868;&#x793A;&#x4E0D;&#x5B58;&#x5728;&#x53EF;&#x4EE5;&#x5BB9;&#x7EB3;k&#x4E2A;&#x89C2;&#x4F17;&#x7684;&#x884C;&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;0</p>
+</li>
+<li><p>&#x5F53;&#x524D;&#x533A;&#x95F4;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;l = r&#xFF0C;&#x8868;&#x793A;&#x627E;&#x5230;&#x4E86;&#x6700;&#x5C0F;&#x7684;&#x4E0B;&#x6807;</p>
+</li>
+<li><p>&#x5DE6;&#x5B50;&#x6811;&#x5BF9;&#x5E94;&#x7684;&#x6700;&#x5C0F;&#x503C; &#x2264; m-k&#xFF0C;&#x8868;&#x793A;&#x5DE6;&#x5B50;&#x6811;&#x5B58;&#x5728;&#x53EF;&#x4EE5;&#x5BB9;&#x7EB3;k&#x4E2A;&#x89C2;&#x4F17;&#x7684;&#x884C;&#xFF0C;&#x9012;&#x5F52;&#x5DE6;&#x5B50;&#x6811;</p>
+</li>
+<li><p>&#x5DE6;&#x5B50;&#x6811;&#x4E0D;&#x5B58;&#x5728;&#x8FD9;&#x6837;&#x7684;&#x884C;&#xFF0C;&#x9012;&#x5F52;&#x53F3;&#x5B50;&#x6811;&#xFF08;&#x9012;&#x5F52;&#x7684;&#x524D;&#x63D0;&#x662F;maxRow&#x5728;mid&#x7684;&#x53F3;&#x8FB9;&#xFF09;</p>
+</li>
+<li><p>&#x65E0;&#x6CD5;&#x9012;&#x5F52;&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;0</p>
+</li>
+</ul>
+<p>&#x5177;&#x4F53;&#x4EE3;&#x7801;&#x5982;&#x4E0B;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>t <span class="token operator">*</span>BookMyShow<span class="token punctuation">)</span> <span class="token function">Index</span><span class="token punctuation">(</span>o<span class="token punctuation">,</span> l<span class="token punctuation">,</span> r<span class="token punctuation">,</span> val<span class="token punctuation">,</span> R <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+    <span class="token comment">// &#x8FD4;&#x56DE;&#x533A;&#x95F4;[1, R]&#x4E2D;&#x5C0F;&#x4E8E;&#x7B49;&#x4E8E;val&#x7684;&#x6700;&#x9760;&#x5DE6;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x4E0D;&#x5B58;&#x5728;&#x8FD4;&#x56DE;0</span>
+    <span class="token keyword">if</span> t<span class="token punctuation">.</span>min<span class="token punctuation">[</span>o<span class="token punctuation">]</span> <span class="token operator">&gt;</span> val <span class="token punctuation">{</span>
+        <span class="token comment">// &#x6574;&#x4E2A;&#x533A;&#x95F4;&#x7684;&#x5143;&#x7D20;&#x90FD;&#x5927;&#x4E8E;val</span>
+        <span class="token keyword">return</span> <span class="token number">0</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> l <span class="token operator">==</span> r <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> l
+    <span class="token punctuation">}</span>
+
+    mid <span class="token operator">:=</span> <span class="token punctuation">(</span>l <span class="token operator">+</span> r<span class="token punctuation">)</span> <span class="token operator">&gt;&gt;</span> <span class="token number">1</span>
+
+    <span class="token keyword">if</span> t<span class="token punctuation">.</span>min<span class="token punctuation">[</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> val <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> t<span class="token punctuation">.</span><span class="token function">Index</span><span class="token punctuation">(</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">,</span> l<span class="token punctuation">,</span> mid<span class="token punctuation">,</span> val<span class="token punctuation">,</span> R<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> mid <span class="token operator">&lt;</span> R <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> t<span class="token punctuation">.</span><span class="token function">Index</span><span class="token punctuation">(</span><span class="token punctuation">(</span>o<span class="token operator">&lt;&lt;</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">|</span><span class="token number">1</span><span class="token punctuation">,</span> mid<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> r<span class="token punctuation">,</span> val<span class="token punctuation">,</span> R<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h2 id="&#x52A8;&#x6001;&#x5F00;&#x70B9;&#x7EBF;&#x6BB5;&#x6811;">&#x52A8;&#x6001;&#x5F00;&#x70B9;&#x7EBF;&#x6BB5;&#x6811;</h2>
+<p>&#x5F53;&#x503C;&#x57DF;&#x8FC7;&#x5927;&#xFF0C;&#x65E0;&#x6CD5;&#x76F4;&#x63A5;&#x5F00;&#x8F9F;&#x7B49;&#x91CF;&#x7684;&#x6570;&#x7EC4;&#x65F6;&#xFF0C;&#x4E00;&#x822C;&#x91C7;&#x7528;&#x79BB;&#x6563;&#x5316;&#x3002;&#x4F46;&#x662F;&#x5982;&#x679C;&#x4E8B;&#x5148;&#x4E0D;&#x77E5;&#x9053;&#x6570;&#x636E;&#xFF0C;&#x79BB;&#x6563;&#x5316;&#x5C06;&#x53D8;&#x5F97;&#x56F0;&#x96BE;&#x3002;&#x6B64;&#x65F6;&#x4F7F;&#x7528;&#x52A8;&#x6001;&#x5F00;&#x70B9;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
+<p>&#x4EE5;2426&#x8FD9;&#x9053;&#x9898;&#x4E3E;&#x4F8B;&#xFF0C;&#x503C;&#x57DF;&#x5305;&#x542B;&#x8D1F;&#x6570;&#xFF0C;&#x9700;&#x8981;&#x79BB;&#x6563;&#x5316;&#x6216;&#x8005;&#x4F7F;&#x7528;&#x52A8;&#x6001;&#x5F00;&#x70B9;</p>
+<p>&#x6B64;&#x65F6;&#x7684;query&#x548C;add&#x64CD;&#x4F5C;&#xFF0C;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x4FEE;&#x6539;</p>
+<p>&#x4F7F;&#x7528;&#x7684;&#x65F6;&#x5019;&#x518D;&#x5F00;&#x8F9F;&#x7A7A;&#x95F4;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x4E8B;&#x5148;&#x5C31;&#x5F00;&#x8F9F;&#x597D;&#x7A7A;&#x95F4;&#x3002;&#x56E0;&#x6B64;add&#x7684;&#x4EE3;&#x7801;&#x4E3A;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>s <span class="token operator">*</span>SegmentTree<span class="token punctuation">)</span> <span class="token function">add</span><span class="token punctuation">(</span>l<span class="token punctuation">,</span> r<span class="token punctuation">,</span> idx<span class="token punctuation">,</span> val <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> l <span class="token operator">==</span> r <span class="token punctuation">{</span>
+        s<span class="token punctuation">.</span>sum <span class="token operator">+=</span> val
+        <span class="token keyword">return</span>
+    <span class="token punctuation">}</span>
+    mid <span class="token operator">:=</span> <span class="token punctuation">(</span>l <span class="token operator">+</span> r<span class="token punctuation">)</span> <span class="token operator">&gt;&gt;</span> <span class="token number">1</span>
+    <span class="token keyword">if</span> s<span class="token punctuation">.</span>left <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        s<span class="token punctuation">.</span>left <span class="token operator">=</span> <span class="token operator">&amp;</span>SegmentTree<span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> s<span class="token punctuation">.</span>right <span class="token operator">==</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        s<span class="token punctuation">.</span>right <span class="token operator">=</span> <span class="token operator">&amp;</span>SegmentTree<span class="token punctuation">{</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">if</span> idx <span class="token operator">&lt;=</span> mid <span class="token punctuation">{</span>
+        s<span class="token punctuation">.</span>left<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>l<span class="token punctuation">,</span> mid<span class="token punctuation">,</span> idx<span class="token punctuation">,</span> val<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+        s<span class="token punctuation">.</span>right<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>mid<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> r<span class="token punctuation">,</span> idx<span class="token punctuation">,</span> val<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+
+    s<span class="token punctuation">.</span>sum <span class="token operator">=</span> s<span class="token punctuation">.</span>left<span class="token punctuation">.</span>sum <span class="token operator">+</span> s<span class="token punctuation">.</span>right<span class="token punctuation">.</span>sum
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x533A;&#x522B;&#x5728;&#x4E8E;&#x5982;&#x679C;&#x9700;&#x8981;&#x7EE7;&#x7EED;&#x9012;&#x5F52;&#xFF0C;&#x6B64;&#x65F6;&#x518D;&#x5F00;&#x8F9F;&#x5BF9;&#x5E94;&#x7684;&#x5B50;&#x8282;&#x70B9;&#x3002;</p>
+<p>&#x67E5;&#x8BE2;&#x7684;&#x4EE3;&#x7801;&#x5982;&#x4E0B;</p>
+<pre class="language-"><code class="lang-go"><span class="token keyword">func</span> <span class="token punctuation">(</span>s <span class="token operator">*</span>SegmentTree<span class="token punctuation">)</span> <span class="token function">query</span><span class="token punctuation">(</span>l<span class="token punctuation">,</span> r<span class="token punctuation">,</span> L<span class="token punctuation">,</span> R <span class="token builtin">int</span><span class="token punctuation">)</span> <span class="token builtin">int</span> <span class="token punctuation">{</span>
+    <span class="token keyword">if</span> L <span class="token operator">&lt;=</span> l <span class="token operator">&amp;&amp;</span> r <span class="token operator">&lt;=</span> R <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> s<span class="token punctuation">.</span>sum
+    <span class="token punctuation">}</span>
+    mid <span class="token operator">:=</span> <span class="token punctuation">(</span>l <span class="token operator">+</span> r<span class="token punctuation">)</span> <span class="token operator">&gt;&gt;</span> <span class="token number">1</span>
+    sum <span class="token operator">:=</span> <span class="token number">0</span>
+    <span class="token keyword">if</span> L <span class="token operator">&lt;=</span> mid <span class="token operator">&amp;&amp;</span> s<span class="token punctuation">.</span>left <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        sum <span class="token operator">+=</span> s<span class="token punctuation">.</span>left<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span>l<span class="token punctuation">,</span> mid<span class="token punctuation">,</span> L<span class="token punctuation">,</span> R<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">if</span> R <span class="token operator">&gt;</span> mid <span class="token operator">&amp;&amp;</span> s<span class="token punctuation">.</span>right <span class="token operator">!=</span> <span class="token boolean">nil</span> <span class="token punctuation">{</span>
+        sum <span class="token operator">+=</span> s<span class="token punctuation">.</span>right<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span>mid<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> r<span class="token punctuation">,</span> L<span class="token punctuation">,</span> R<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> sum
+<span class="token punctuation">}</span>
+</code></pre>
+<p>&#x533A;&#x522B;&#x5728;&#x4E8E;&#x6BCF;&#x6B21;&#x67E5;&#x8BE2;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x9700;&#x8981;&#x5224;&#x65AD;&#x8BE5;&#x8282;&#x70B9;&#x662F;&#x5426;&#x5B58;&#x5728;&#x5DE6;&#x5B69;&#x5B50;&#x548C;&#x53F3;&#x5B69;&#x5B50;&#x3002;&#x53EA;&#x6709;&#x5B58;&#x5728;&#xFF0C;&#x624D;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x9012;&#x5F52;</p>
+<h2 id="&#x5177;&#x4F53;&#x5E94;&#x7528;">&#x5177;&#x4F53;&#x5E94;&#x7528;</h2>
+<ul>
+<li><p>&#x67E5;&#x8BE2;&#x533A;&#x95F4;&#x548C;</p>
+</li>
+<li><p>&#x67E5;&#x8BE2;&#x533A;&#x95F4;&#x6700;&#x503C;</p>
+</li>
+<li><p>&#x67E5;&#x8BE2;&#x533A;&#x95F4;&#x5927;&#x4E8E;x&#x7684;&#x5143;&#x7D20;&#x4E2A;&#x6570;</p>
+</li>
+<li><p>&#x67E5;&#x8BE2;&#x67D0;&#x4E2A;&#x533A;&#x95F4;&#x4E2D;&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#x7684;&#x6700;&#x5C0F;&#x5143;&#x7D20;</p>
+</li>
+</ul>
+<h2 id="&#x4E60;&#x9898;&#xFF1A;">&#x4E60;&#x9898;&#xFF1A;</h2>
+<p><a href="https://leetcode.cn/problems/range-sum-query-mutable/" target="_blank">307. &#x533A;&#x57DF;&#x548C;&#x68C0;&#x7D22; - &#x6570;&#x7EC4;&#x53EF;&#x4FEE;&#x6539;</a> - &#x57FA;&#x7840;&#x7EBF;&#x6BB5;&#x6811;</p>
+<p><a href="https://leetcode.cn/problems/number-of-pairs-satisfying-inequality/" target="_blank">2426. &#x6EE1;&#x8DB3;&#x4E0D;&#x7B49;&#x5F0F;&#x7684;&#x6570;&#x5BF9;&#x6570;&#x76EE;</a> - &#x57FA;&#x7840;&#x7EBF;&#x6BB5;&#x6811; + &#x79BB;&#x6563;&#x5316; + &#x516C;&#x5F0F;&#x53D8;&#x5F62; || &#x4E5F;&#x53EF;&#x7528;&#x52A8;&#x6001;&#x5F00;&#x70B9;&#x7684;&#x65B9;&#x5F0F;&#x6C42;&#x89E3;</p>
+<p><a href="https://leetcode.cn/problems/booking-concert-tickets-in-groups/" target="_blank">2286. &#x4EE5;&#x7EC4;&#x4E3A;&#x5355;&#x4F4D;&#x8BA2;&#x97F3;&#x4E50;&#x4F1A;&#x7684;&#x95E8;&#x7968;</a> - &#x57FA;&#x7840;&#x7EBF;&#x6BB5;&#x6811; + &#x7EBF;&#x6BB5;&#x6811;&#x4E8C;&#x5206;</p>
+<p><a href="https://leetcode.cn/problems/count-integers-in-intervals/" target="_blank">2276. &#x7EDF;&#x8BA1;&#x533A;&#x95F4;&#x4E2D;&#x7684;&#x6574;&#x6570;&#x6570;&#x76EE;</a> - &#x57FA;&#x7840;&#x7EBF;&#x6BB5;&#x6811; + &#x52A8;&#x6001;&#x5F00;&#x70B9;</p>
+<footer class="page-footer"><span class="copyright">Copyright &#xA9;2024-2024 cnggboy &#x7248;&#x6743;&#x6240;&#x6709; all right reserved&#xFF0C;powered by Gitbook</span><span class="footer-modification">&#x8BE5;&#x6587;&#x7AE0;&#x4FEE;&#x8BA2;&#x65F6;&#x95F4;&#xFF1A;
+2024-09-19 18:48:41
+</span></footer> 
+
+<footer class="page-footer">
+&#x6211;&#x7684;&#x5907;&#x6848;&#x53F7;:<a href="https://beian.miit.gov.cn/" target="_blank">&#x4EAC;ICP&#x5907;2024087391&#x53F7;-1</a>
+</footer>
+<script>console.log("plugin-popup....");document.onclick = function(e){ e.target.tagName === "IMG" && window.open(e.target.src,e.target.src)}</script><style>img{cursor:pointer}</style>
+						
+					</section>
+					
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+				</div>
+			</div>
+			
+		</div>
+
+		
+		
+		<a href="../datastruct.html" class="navigation navigation-prev " aria-label="Previous page: 数据结构">
+			<i class="fa fa-angle-left"></i>
+		</a>
+		
+		
+		<a href="heapq.html" class="navigation navigation-next " aria-label="Next page: 最小/最大堆">
+			<i class="fa fa-angle-right"></i>
+		</a>
+		
+		
+		
+	</div>
+	<script>
+		var gitbook = gitbook || [];
+		gitbook.push(function() {
+			gitbook.page.hasChanged({"page":{"title":"线段树","level":"2.2.1","depth":2,"next":{"title":"最小/最大堆","level":"2.2.2","depth":2,"path":"algorithms/data-structures/heapq.md","ref":"algorithms/data-structures/heapq.md","articles":[]},"previous":{"title":"数据结构","level":"2.2","depth":1,"path":"algorithms/datastruct.md","ref":"algorithms/datastruct.md","articles":[{"title":"线段树","level":"2.2.1","depth":2,"path":"algorithms/data-structures/segment.md","ref":"algorithms/data-structures/segment.md","articles":[]},{"title":"最小/最大堆","level":"2.2.2","depth":2,"path":"algorithms/data-structures/heapq.md","ref":"algorithms/data-structures/heapq.md","articles":[]},{"title":"双端队列","level":"2.2.3","depth":2,"path":"algorithms/data-structures/deque.md","ref":"algorithms/data-structures/deque.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["hide-element","back-to-top-button","code","splitter","-lunr","-search","search-pro","tbfed-pagefooter","popup","-sharing","sharing-plus","theme-fexa","github","3-ba","pageview-count","ga","icp","chapter-fold","expandable-chapters","prism","-highlight","livereload"],"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright ©2024-2024 cnggboy 版权所有","modify_label":"该文章修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"chapter-fold":{},"prism":{},"github":{"url":"https://github.com/GGboya/cnggboy"},"livereload":{},"splitter":{},"search-pro":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"popup":{},"theme-fexa":{"search-placeholder":"输入关键字搜索","logo":"img/image.png","favicon":"img/favicon.ico"},"code":{"copyButtons":true},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"icp":{"link":"https://beian.miit.gov.cn/","style":{},"label":"我的备案号:","number":"京ICP备2024087391号-1"},"back-to-top-button":{},"pageview-count":{"type":"baidu","token":"c301a0cc12e8024756e08171e3e982d5"},"3-ba":{"configuration":"auto","token":"c301a0cc12e8024756e08171e3e982d5"},"ga":{"configuration":"auto","token":"G-P6MWM7FMKD"},"sharing":{"douban":true,"qq":true,"weibo":true,"all":["douban","facebook","google","instapaper","linkedin","twitter","weibo","messenger","qq","qzone","viber","whatsapp"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{"themeFexa":{"nav":[{"url":"http://122.51.217.77/","target":"_blank","name":"ggboy"}]}},"gitbook":"*"},"file":{"path":"algorithms/data-structures/segment.md","mtime":"2024-09-19T10:48:41.673Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2024-09-19T10:50:02.386Z"},"basePath":"../..","book":{"language":""}});
+		});
+	</script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-3-ba/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-pageview-count/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-ga/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-theme-fexa/fexa.js"></script>
+        
+    
+
+    </body>
+</html>
+

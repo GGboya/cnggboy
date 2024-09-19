@@ -1,5 +1,5 @@
 # 筛质数
-```Go
+```go
 func GetPrimeList(n int) []int {
 	// p[i] == 1 表示为质数， p[i] == -1 表示为合数
 	p := make([]int, n+1)

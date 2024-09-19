@@ -2,7 +2,7 @@ go提供了heap的接口，只需要实现对应的函数即可
 
 
 
-```Go
+```go
 type pair struct{ x, y, dist int }
 
 type hp []pair
