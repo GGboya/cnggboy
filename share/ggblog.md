@@ -152,7 +152,7 @@ if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8081)
 ```
 
-### 3. 配置 Nginx 代理
+#### 配置 Nginx 代理
 
 - 在 Nginx 配置中，将请求转发到 Flask 应用：
 
@@ -171,7 +171,7 @@ server {
 }
 ```
 
-### 4. 启动 Flask 应用
+#### 启动 Flask 应用
 
 - 如果使用 `systemctl` 管理 Flask 应用，确保服务已启动并正常运行：
 
@@ -179,7 +179,7 @@ server {
 sudo systemctl start your_service_name
 ```
 
-### 5. 测试 Webhook
+#### 测试 Webhook
 
 - 使用 `curl` 命令模拟 GitHub 发来的 webhook 请求：
 
