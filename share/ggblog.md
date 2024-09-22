@@ -38,15 +38,25 @@ sudo vim /etc/nginx/sites-available/gitbook
 ```nginx
 server {
     listen 80;
-    server_name yourdomain.com;
+    server_name your_domain;
 
     location / {
-        proxy_pass http://localhost:321;
+        proxy_pass http://localhost:4000;  # 将根路径的请求转发到本地的应用
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
     }
+
+    location /github-webhook/ {
+        proxy_pass http://localhost:8081;  # 将 /github-webhook/ 的请求转发到 Flask 应用
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    # 可以在这里添加其他 location 块
 }
 ```
 
@@ -104,65 +114,79 @@ sudo systemctl enable gitbook
 
 你可以通过 `systemd` 来管理这个监听和自动重新编译的脚本。具体步骤如下：
 
-### 3. 监听 .md 文件的变更
-确保你已经有了用于监听 Markdown 文件变化并自动重新编译 GitBook 的 Bash 脚本（如你提供的脚本）。你可以将它保存在 `/home/ubuntu/projects/watch-and-build.sh` 中。
+### 3. github-webhook
+当然可以，以下是我们关于 GitHub Webhook 和 Flask 应用的整合过程的整理：
+
+#### 创建 GitHub Webhook
+
+- 在 GitHub 仓库中设置 webhook，指向你的服务器地址（如 `http://www.cnggboy.com/github-webhook/`）。
+- 设置触发事件为 `pull_request`，确保每当 PR 被合并时发送 POST 请求。
+
+#### 编写 Flask 应用
+
+- 创建一个 Flask 应用，处理来自 GitHub 的 POST 请求。
+
+```python
+import subprocess
+from flask import Flask, request, jsonify
+
+app = Flask(__name__)
+
+@app.route('/github-webhook/', methods=['POST'])
+def github_webhook():
+    if request.method == 'POST':
+        event_type = request.headers.get('X-GitHub-Event')
+
+        if event_type == 'pull_request':
+            payload = request.json
+            if payload.get('action') == 'closed' and payload.get('merged'):
+                subprocess.run(['git', '-C', '/home/ubuntu/projects/ggcoding', 'pull'])
+                subprocess.run(['sudo', 'systemctl', 'restart', 'gitbook'])
+                return jsonify({'status': 'success', 'action': 'pull_request merged'}), 200
+            else:
+                return jsonify({'status': 'ignored', 'action': payload.get('action')}), 200
+        else:
+            return jsonify({'status': 'ignored', 'event': event_type}), 200
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=8081)
+```
+
+### 3. 配置 Nginx 代理
+
+- 在 Nginx 配置中，将请求转发到 Flask 应用：
+
+```nginx
+server {
+    listen 80;
+    server_name www.cnggboy.com;
+
+    location /github-webhook/ {
+        proxy_pass http://localhost:8081/github-webhook/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+```
+
+### 4. 启动 Flask 应用
+
+- 如果使用 `systemctl` 管理 Flask 应用，确保服务已启动并正常运行：
 
 ```bash
-#!/bin/bash
-
-WATCH_DIR="your-gitbook-path"
-
-# 监控 Markdown 文件的变化，包括子目录中的文件
-inotifywait -m -r -e modify,create,delete --format '%w%f' "${WATCH_DIR}" |
-while read -r file; do
-    # 如果变化的文件是 Markdown 文件
-    if [[ "$file" == *.md ]]; then
-        echo "Markdown file changed: $file, restarting GitBook service..."
-        sudo systemctl restart gitbook
-    fi
-done
-
+sudo systemctl start your_service_name
 ```
 
-#### 创建 systemd 服务文件
+### 5. 测试 Webhook
 
-创建一个新的 `systemd` 服务文件，比如 `/etc/systemd/system/gitbook-watch.service`，用于管理这个脚本。
+- 使用 `curl` 命令模拟 GitHub 发来的 webhook 请求：
 
 ```bash
-sudo vim /etc/systemd/system/gitbook-watch.service
+curl -X POST http://localhost:8081/github-webhook/ -H "Content-Type: application/json" -d '{"action": "closed", "pull_request": {"merged": true}}'
 ```
 
-在文件中添加以下内容：
+- 确保 Flask 应用能够正确响应请求并执行相应操作（如 `git pull` 和重启 GitBook）。
 
-```ini
-[Unit]
-Description=Watch and Build GitBook
-After=network.target
-
-[Service]
-ExecStart=/bin/bash /home/ubuntu/projects/watch-and-build.sh
-Restart=always
-User=ubuntu
-Group=ubuntu
-
-[Install]
-WantedBy=multi-user.target
-```
-
-- `ExecStart`：指向你的脚本路径。
-- `Restart=always`：确保脚本在崩溃或意外停止时会自动重启。
-- `User` 和 `Group`：设置为运行服务的用户和用户组。
-
-#### 启动并启用服务
-
-接下来，运行以下命令来启动和启用服务：
-
-```bash
-sudo systemctl daemon-reload
-sudo systemctl start gitbook-watch.service
-sudo systemctl enable gitbook-watch.service
-```
-
-这将启动 `gitbook-watch` 服务，并在系统启动时自动启动该服务。
-
-至此，一个简单的博客就搭建完毕了，后续将 github 关联起来即可。
+至此，我们已经将 GitHub Webhook 与 Flask 应用进行了整合，并成功实现了自动更新和重启 GitBook 的功能。
